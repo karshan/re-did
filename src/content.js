@@ -1,19 +1,11 @@
 // Ads are identified by the text "promoted" in the span element
 function removePromotedPosts() {
-    const allSpans = document.querySelectorAll('span');
-    let removed = 0;
+    const allAds = document.querySelectorAll('shreddit-ad-post');
+    let removed = allAds.length;
 
-    Array.from(allSpans).forEach(span => {
-        if (span.textContent === 'promoted') {
-            const ancestorDiv = span.closest('[data-testid="post-container"]');
-            if (ancestorDiv) {
-                ancestorDiv.remove();
-                removed++;
-            }
-        }
-    });
+    allAds.forEach(a => a.remove())
 
-    if (removed) {
+    if (removed > 0) {
         console.log(`Promoted posts removed! 🎉 (${removed})`);
     }
 }
